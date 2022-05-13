@@ -2,7 +2,7 @@
 Simulate GPIO in qemu-based Raspberry Pi
 
 ## How it works
-The script (`qemu-rpi-gpio`) present in this repository interacts with qemu 
+The script (`qemu-rpi-gpio`) present in this repository interacts with qemu
 using the built-in `qtest` protocol.
 
 Wrapping the protocol and interacting with the memory of the guest operating
@@ -15,25 +15,20 @@ will not do anything.
 To enable interrupt support you'll need to download and compile
 [this qemu fork](https://github.com/berdav/qemu).
 
-## Installation
-You can install the script via pip with
-```
-pip install qemu-rpi-gpio
-```
 
 ## Prereqisites
-You need `socat`, `python3` and `pexpect` library to use this
-script.
-
-These can be installed under ubuntu with:
-```
-sudo apt install python3-pexpect socat
-```
-
-To download raspbian images you'll need 7zip
+You need:
+* `python 3`.
+* `poetry` - e.g. `pip install poetry`
+* `socat` - e.g. `sudo apt install socat`
+* To download raspbian images you'll need 7zip:
 ```
 sudo apt install p7zip-full
 ```
+
+## Installation
+
+Using Poetry: `poetry install`
 
 ## Setup
 Download a raspbian image using
@@ -44,7 +39,7 @@ Download a raspbian image using
 After this operation, execute the script to load the unix socket and make it
 available to qemu
 ```
-./qemu-rpi-gpio
+poetry run ./qemu-rpi-gpio
 ```
 
 You will be prompted to an interactive shell, you can find the commands available
@@ -80,7 +75,7 @@ For instance, let us set the value of the pre-exported gpio 4
 (gpio)> set 4 1
 ```
 
-Now you can read the value of your gpio 
+Now you can read the value of your gpio
 
 ```
 # cat /sys/class/gpio/value
